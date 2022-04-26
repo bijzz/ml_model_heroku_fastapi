@@ -1,4 +1,4 @@
-name: Python package
+name: udacity.project.build
 
 on:
   push:
