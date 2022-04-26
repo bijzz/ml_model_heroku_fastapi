@@ -19,11 +19,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        conda env create -f starter/environment.yml
-        conda init bash
-        conda activate p3_ml_fastapi_heroku
+        conda env update --file starter/environment.yml --name base
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
