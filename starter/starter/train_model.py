@@ -44,4 +44,6 @@ y_pred = inference(model,X_test)
 precision, recall, fbeta = compute_model_metrics(y_test, y_pred)
 print("Metrics precision {}, recall {}, fbeta {}".format(precision, recall, fbeta))
 
-dump(model, '../data/model.joblib') 
+dump(model, '../model/model.joblib') 
+dump(encoder, '../model/encoder.joblib') 
+dump(lb, '../model/lb.joblib') 
