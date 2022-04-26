@@ -67,4 +67,4 @@ async def inference(input: Entry):
     classification = "<=50K" if inference[0] == 0 else ">50k"
         
 
-    return {"pediction": classification}
+    return {"salary prediction class": classification}

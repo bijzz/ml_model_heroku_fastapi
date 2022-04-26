@@ -4,7 +4,7 @@ For additional information see the Model Card paper: https://arxiv.org/pdf/1810.
 
 ## Model Details
 
-The model tries to classify whether a person's salary is higher or lower than 50k based on the persons information such as his education, occupation or sex. The data was trained using a support vector model.
+The model tries to classify whether a person's salary is higher or lower than 50k based on the persons information such as his education, occupation or sex. The data was trained using a decision tree classifier.
 
 ## Intended Use
 
