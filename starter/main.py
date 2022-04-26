@@ -64,7 +64,7 @@ async def inference(input: Entry):
     )
     inference = model.predict(sample_processed)
     print(inference[0])
-    classification = "<=50K" if inference[0] == 0 else ">50k"
+    classification = "<=50K" if inference[0] == 0 else ">50K"
         
 
     return {"salary prediction class": classification}
