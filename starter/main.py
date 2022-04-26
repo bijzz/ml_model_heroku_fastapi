@@ -1,9 +1,11 @@
 # Put the code for your API here.
+from turtle import update
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Union
 from joblib import dump, load
 from starter.ml.data import process_data
+import pandas as pd
 
 # Instantiate the app.
 app = FastAPI()
@@ -40,16 +42,29 @@ cat_features = [
     "native-country",
 ]
 
+
+def inputToDataFrame(input):
+    updated_dict = {key:[value] for key, value in input.dict().items()}
+    df = pd.DataFrame.from_dict(updated_dict)
+    hyphen_columns = input.schema()["properties"].keys()
+    df.columns = hyphen_columns
+    return df
+
 @app.post("/inference")
 async def inference(input: Entry):
-    model = load('/model/model.joblib') 
-    encoder = load('/model/encoder.joblib') 
-    lb = load('/model/lb.joblib') 
-    
-    sample = "asd"
-    sample_processed, y_test, encoder, lb = process_data(
-        sample, categorical_features=cat_features, label=None, training=False, encoder=encoder, lb=lb
+    # load model
+    model = load('model/model.joblib') 
+    encoder = load('model/encoder.joblib') 
+    lb = load('model/lb.joblib') 
+    # adjust input for processing
+    input_df = inputToDataFrame(input)
+    # prepare input vector
+    sample_processed, _, encoder, lb = process_data(
+        input_df, categorical_features=cat_features, label=None, training=False, encoder=encoder, lb=lb
     )
-    inference = inference(model, sample_processed)
+    inference = model.predict(sample_processed)
+    print(inference[0])
+    classification = "<=50K" if inference[0] == 0 else ">50k"
+        
 
-    return {"pediction": inference}
+    return {"pediction": classification}

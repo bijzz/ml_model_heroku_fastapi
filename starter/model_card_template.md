@@ -4,7 +4,7 @@ For additional information see the Model Card paper: https://arxiv.org/pdf/1810.
 
 ## Model Details
 
-The model tries to classify whether a person's salary is higher or lower than 50k based on the persons information such as his education, occupation or sex. The data was trained using a logistric regression model.
+The model tries to classify whether a person's salary is higher or lower than 50k based on the persons information such as his education, occupation or sex. The data was trained using a support vector model.
 
 ## Intended Use
 
@@ -20,9 +20,9 @@ Evaluation data corresponds to 20% of the original dataset (see training data).
 
 ## Metrics
 
-Precision: 0.71
-Recall: 0.26
-F-beta 0.38
+Precision: 0.97
+Recall: 0.16
+F-beta 0.27
 
 All metrics listed range from optimal value of 1 to worst value at 0. Details about the metrics can be found at [scikit-learn](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics).
 
