@@ -7,6 +7,7 @@ dependencies:
 - pandas
 - scikit-learn
 - pytest
+- flake8
 - requests
 - fastapi==0.63.0
 - uvicorn
@@ -14,5 +15,4 @@ dependencies:
 - gunicorn
 - pydantic
 - typing
-- pytest
 name: p3_ml_fastapi_heroku
