@@ -5,7 +5,8 @@ from sklearn.model_selection import train_test_split
 # Add the necessary imports for the starter code.
 import pandas as pd
 from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, inference
+from ml.model import train_model, compute_model_metrics
+from ml.model import inference, performance_on_model_slices
 from joblib import dump
 
 # Add code to load in the data.
@@ -49,3 +50,8 @@ print("Metrics precision {}, recall {}, fbeta {}".format(precision,
 dump(model, '../model/model.joblib')
 dump(encoder, '../model/encoder.joblib')
 dump(lb, '../model/lb.joblib')
+
+
+
+slice_df = performance_on_model_slices(test, y_test, y_pred, cat_features)
+pd.DataFrame(slice_df).to_csv('../data/slice_output.txt', index=False)

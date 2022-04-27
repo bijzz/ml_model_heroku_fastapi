@@ -1,6 +1,6 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.tree import DecisionTreeClassifier
-
+import pandas as pd
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -61,3 +61,28 @@ def inference(model, X):
         Predictions from the model.
     """
     return model.predict(X)
+
+def performance_on_model_slices(df, y_test, y_pred, columns):
+    """ Computes model performance for fixed value of a feature
+
+    Inputs
+    ------
+    df : input dataframe 
+    y_test : y test value
+    y_pred : y prediction values
+    columns : list of columns/features used for slicing
+
+    Returns
+    -------
+    df : dataframe containing the results
+    """
+    result_df = pd.DataFrame(columns=['column','fixed_value','precision','recall','fbeta'])
+
+    for col in columns:
+        col_distinct_value = df[col].unique()
+        for fix_value in col_distinct_value:
+            y_test_slice = y_test[df[col] == fix_value]
+            y_pred_slice = y_pred[df[col] == fix_value]
+            precision, recall, fbeta = compute_model_metrics(y_test_slice, y_pred_slice)
+            result_df = pd.concat([pd.DataFrame([[col, fix_value, precision, recall, fbeta]], columns=result_df.columns), result_df], ignore_index=True)
+    return result_df
