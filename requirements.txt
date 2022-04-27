@@ -27,8 +27,6 @@ distro==1.6.0
 docopt==0.6.2
 dpath==2.0.6
 dulwich==0.20.35
-dvc==2.10.1
-dvc-render==0.0.4
 fastapi==0.63.0
 flake8==4.0.1
 flatten-dict==0.4.2
@@ -58,7 +56,6 @@ multidict==6.0.2
 munkres==1.1.4
 nanotime==0.5.2
 networkx==2.8
-numpy==1.22.3
 packaging==21.3
 pandas==1.4.2
 pathlib2==2.3.7.post1
@@ -94,8 +91,6 @@ requests==2.27.1
 rich==12.2.0
 ruamel.yaml==0.17.21
 ruamel.yaml.clib==0.2.6
-scikit-learn==1.0.2
-scipy==1.8.0
 scmrepo==0.0.16
 setuptools==62.1.0
 shortuuid==1.0.8
