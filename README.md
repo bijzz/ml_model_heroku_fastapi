@@ -33,3 +33,7 @@ At the time of writing the Github Heroku integration is disabled due to security
 Calling the GET endpoint on deployed Heroku instance:
 
 ![get](/screenshots/live_get.png)
+
+Testing the POST endpoint via an script:
+
+![post](/screenshots/live_post.png)
