@@ -16,6 +16,11 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
         exit("dvc pull failed")
     os.system("rm -r .dvc .apt/usr/lib/dvc")
 
+if "DYNO" in os.environ:
+    folder_path = "starter/model/"
+else:
+    folder_path = "model/"
+
 
 @app.get("/")
 async def welcome():
@@ -63,9 +68,9 @@ def inputToDataFrame(input):
 @app.post("/inference")
 async def inference(input: Entry):
     # load model
-    model = load('model/model.joblib')
-    encoder = load('model/encoder.joblib')
-    lb = load('model/lb.joblib')
+    model = load(folder_path+'model.joblib')
+    encoder = load(folder_path+'encoder.joblib')
+    lb = load(folder_path+'lb.joblib')
     # adjust input for processing
     input_df = inputToDataFrame(input)
     # prepare input vector
