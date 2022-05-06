@@ -37,7 +37,6 @@ X_test, y_test, encoder, lb = process_data(
     training=False, encoder=encoder, lb=lb
 )
 
-
 # Train and save a model.
 model = train_model(X_train, y_train)
 
@@ -50,8 +49,6 @@ print("Metrics precision {}, recall {}, fbeta {}".format(precision,
 dump(model, '../model/model.joblib')
 dump(encoder, '../model/encoder.joblib')
 dump(lb, '../model/lb.joblib')
-
-
 
 slice_df = performance_on_model_slices(test, y_test, y_pred, cat_features)
 pd.DataFrame(slice_df).to_csv('../data/slice_output.txt', index=False)
