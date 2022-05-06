@@ -4,11 +4,10 @@ from pydantic import BaseModel, Field
 from joblib import load
 from starter.ml.data import process_data
 import pandas as pd
+import os
 
 # Instantiate the app.
 app = FastAPI()
-
-import os
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
